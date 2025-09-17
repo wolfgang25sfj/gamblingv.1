@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="blackjack_styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Blackjack</h1>
+        
+        <div id="wallets">
+            <p>Player Wallet: $<span id="player-wallet">1000</span></p>
+            <p>House Wallet: $<span id="house-wallet">10000</span></p>
+        </div>
+
+        <div id="bet-section">
+            <label for="bet-input">Bet Amount: $</label>
+            <input type="number" id="bet-input" min="5" step="5" value="10">
+        </div>
+
+        <div id="chips-container"></div>
+
+        <div id="message">Click "New Game" to start!</div>
+
+        <div class="hands">
+            <div id="dealer-hand">
+                <h3>Dealer's Hand: <span id="dealer-score">0</span></h3>
+                <div id="dealer-cards"></div>
+            </div>
+
+            <div class="player-hands">
+                <div id="player-hand1">
+                    <h3 id="player-hand1-title">Player's Hand: <span id="player-score1">0</span></h3>
+                    <div id="player-cards1"></div>
+                </div>
+                <div id="player-hand2">
+                    <h3 id="player-hand2-title">Player's Hand 2: <span id="player-score2">0</span></h3>
+                    <div id="player-cards2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="new-game">New Game</button>
+            <button id="hit" disabled>Hit</button>
+            <button id="stand" disabled>Stand</button>
+            <button id="double" disabled>Double Down</button>
+            <button id="split" disabled>Split</button>
+            <button id="rules">Rules</button>
+            <button id="back-to-menu" onclick="window.location.href='index.html'">Back to Menu</button>
+        </div>
+
+        <!-- Rules Modal -->
+        <div id="rules-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">&times;</span>
+                <h2>Blackjack Rules</h2>
+                <p><strong>Objective:</strong> Beat the dealer by getting a hand value closer to 21 without going over.</p>
+                <p><strong>Card Values:</strong> Number cards are worth their face value, face cards (J, Q, K) are worth 10, and Aces are worth 1 or 11 (whichever is better).</p>
+                <p><strong>Gameplay:</strong>
+                    <ul>
+                        <li>Place a bet and click "New Game" to start.</li>
+                        <li>You and the dealer receive two cards. One of the dealer's cards is hidden.</li>
+                        <li><strong>Hit:</strong> Take another card.</li>
+                        <li><strong>Stand:</strong> Keep your current hand.</li>
+                        <li><strong>Double Down:</strong> Double your bet, take one more card, then stand (available on first two cards or one card after split).</li>
+                        <li><strong>Split:</strong> If your first two cards have the same value, split them into two hands, doubling your bet. Each hand starts with one card, and you choose actions for each.</li>
+                        <li>Dealer hits until their score is 17 or higher.</li>
+                    </ul>
+                </p>
+                <p><strong>Payouts:</strong>
+                    <ul>
+                        <li>Win: 1:1 (double your bet returned).</li>
+                        <li>Blackjack (Ace + 10/J/Q/K on first two cards): 3:2.</li>
+                        <li>Push: Tie, bet returned.</li>
+                        <li>Lose: Bet goes to the house.</li>
+                    </ul>
+                </p>
+                <p><strong>Bankruptcy:</strong> If your wallet reaches $0, the game ends. If the house wallet reaches $0, you win!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="blackjack_script.js"></script>
+</body>
+</html>
